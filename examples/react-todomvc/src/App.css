@@ -1,0 +1,24 @@
+.filters li button {
+  color: inherit;
+  margin: 3px;
+  padding: 3px 7px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.filters li button:hover {
+  border-color: #db7676;
+}
+
+.filters li button.selected {
+  border-color: #ce4646;
+}
+
+.todo-list li.editing .view {
+  display: block;
+}
+
+.todo-list li .edit {
+  display: block;
+}
