@@ -1,7 +1,7 @@
 import { Middleware } from "redux"
 import { isEvent, Storage } from "./types"
 import { EventStore } from "./event-store"
-import { WebStorage } from "./web-storage";
+import { WebStorage } from "./web-storage"
 
 export type MiddlewareOptions = {
   key: string

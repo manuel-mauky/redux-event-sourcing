@@ -1,17 +1,33 @@
 {
   "name": "redux-event-sourcing",
   "version": "0.0.1",
-  "description": "Util to add event-sourcing features to redux apps",
+  "description": "Add client-side event-sourcing features to redux apps",
+  "keywords": [
+    "redux",
+    "event sourcing",
+    "middleware"
+  ],
+  "author": {
+    "name": "Manuel Mauky"
+  },
   "license": "MIT",
   "module": "./dist/esm/index.js",
   "main": "./dist/cjs/index.js",
-  "typings": "./dist/types/index.d.ts",
+  "types": "./dist/types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manuel-mauky/redux-event-sourcing"
+  },
   "scripts": {
-    "build": "yarn run clean && yarn run build:esm && yarn run build:types",
+    "build": "yarn run clean && yarn run build:esm && yarn run build:cjs && yarn run build:types",
     "build:types": "tsc -p tsconfig.types.json",
     "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
     "clean": "rimraf dist"
   },
+  "files": [
+    "/dist"
+  ],
   "peerDependencies": {
     "redux": "^4.0.0"
   },

@@ -1,6 +1,6 @@
-import { AnyAction } from "redux";
-import { EventAction } from "./types";
-import { nanoid } from "nanoid";
+import { AnyAction } from "redux"
+import { EventAction } from "./types"
+import { nanoid } from "nanoid"
 
 export const createEventAction = (action: AnyAction, version?: number): EventAction => ({
   ...action,
@@ -9,7 +9,7 @@ export const createEventAction = (action: AnyAction, version?: number): EventAct
     eventSourcing: {
       id: nanoid(),
       timestamp: Date.now(),
-      version: version || 1
-    }
-  }
+      version: version || 1,
+    },
+  },
 })

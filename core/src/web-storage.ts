@@ -6,10 +6,10 @@ export class WebStorage implements Storage {
   }
 
   async removeItem(key: string): Promise<void> {
-    return new Promise(resolve => resolve(localStorage.removeItem(key)))
+    return new Promise((resolve) => resolve(localStorage.removeItem(key)))
   }
 
   async setItem(key: string, value: string): Promise<void> {
-    return new Promise(resolve => resolve(localStorage.setItem(key, value)))
+    return new Promise((resolve) => resolve(localStorage.setItem(key, value)))
   }
 }
