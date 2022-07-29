@@ -5,7 +5,7 @@
   "private": true,
   "workspaces": [
     "core",
-    "examples/**"
+    "examples/react-todomvc"
   ],
   "scripts": {
     "pretty-quick": "pretty-quick"
@@ -19,5 +19,6 @@
     "husky": "^7.0.2",
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1"
-  }
+  },
+  "packageManager": "yarn@3.2.2"
 }
