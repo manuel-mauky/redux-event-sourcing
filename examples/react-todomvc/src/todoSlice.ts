@@ -2,7 +2,7 @@ import { createSelector, createSlice, PayloadAction, Selector, ThunkAction } fro
 import { RootState } from "./store"
 import { AnyAction } from "redux"
 import { nanoid } from "nanoid"
-import { createEventAction, EVENT_SOURCING_LOAD_EVENTS_ACTION_TYPE } from "redux-event-sourcing";
+import { createEventAction, EVENT_SOURCING_LOAD_EVENTS_ACTION_TYPE } from "redux-event-sourcing"
 
 export type TodoItem = {
   id: string
@@ -71,8 +71,7 @@ export const todoSlice = createSlice({
   },
 })
 
-export const { changeItemsFilter, toggleAll } =
-  todoSlice.actions
+export const { changeItemsFilter, toggleAll } = todoSlice.actions
 
 export const addNewTodo = (title: string): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
@@ -82,17 +81,21 @@ export const addNewTodo = (title: string): ThunkAction<void, RootState, unknown,
   }
 }
 
-export const editTodo = (...args: Parameters<typeof todoSlice.actions.editTodo>) => createEventAction(todoSlice.actions.editTodo(...args))
-export const completeTodo = (...args: Parameters<typeof todoSlice.actions.completeTodo>) => createEventAction(todoSlice.actions.completeTodo(...args))
-export const resetCompleteTodo = (...args: Parameters<typeof todoSlice.actions.resetCompleteTodo>) => createEventAction(todoSlice.actions.resetCompleteTodo(...args))
-export const deleteTodo = (...args: Parameters<typeof todoSlice.actions.deleteTodo>) => createEventAction(todoSlice.actions.deleteTodo(...args))
-export const clearCompleted = (...args: Parameters<typeof todoSlice.actions.clearCompleted>) => createEventAction(todoSlice.actions.clearCompleted(...args))
-
+export const editTodo = (...args: Parameters<typeof todoSlice.actions.editTodo>) =>
+  createEventAction(todoSlice.actions.editTodo(...args))
+export const completeTodo = (...args: Parameters<typeof todoSlice.actions.completeTodo>) =>
+  createEventAction(todoSlice.actions.completeTodo(...args))
+export const resetCompleteTodo = (...args: Parameters<typeof todoSlice.actions.resetCompleteTodo>) =>
+  createEventAction(todoSlice.actions.resetCompleteTodo(...args))
+export const deleteTodo = (...args: Parameters<typeof todoSlice.actions.deleteTodo>) =>
+  createEventAction(todoSlice.actions.deleteTodo(...args))
+export const clearCompleted = (...args: Parameters<typeof todoSlice.actions.clearCompleted>) =>
+  createEventAction(todoSlice.actions.clearCompleted(...args))
 
 export const reducer = todoSlice.reducer
 
 export const selectTodoState: Selector<RootState, TodoState> = (rootState) => rootState.todo
-export const selectFilteredItems = createSelector<RootState, TodoState, ReadonlyArray<TodoItem>>(
+export const selectFilteredItems = createSelector<[typeof selectTodoState], ReadonlyArray<TodoItem>>(
   [selectTodoState],
   (todoState) => {
     switch (todoState.itemsFilter) {
@@ -106,6 +109,7 @@ export const selectFilteredItems = createSelector<RootState, TodoState, Readonly
   }
 )
 
-export const selectAllItemsCompleted = createSelector<RootState, TodoState, boolean>([selectTodoState], (todoState) =>
-  todoState.items.every((item) => item.completed)
+export const selectAllItemsCompleted = createSelector<[typeof selectTodoState], boolean>(
+  [selectTodoState],
+  (todoState) => todoState.items.every((item) => item.completed)
 )

@@ -2,19 +2,18 @@ import { configureStore } from "@reduxjs/toolkit"
 import { reducer as todoReducer } from "./todoSlice"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 
-import { createEventSourcingMiddleware, loadEventActions } from "redux-event-sourcing";
+import { createEventSourcingMiddleware, loadEventActions } from "redux-event-sourcing"
 
 const eventSourcingMiddleware = createEventSourcingMiddleware({
-  key:"todomvc-event-sourcing",
+  key: "todomvc-event-sourcing",
 })
 
 export const store = configureStore({
   reducer: {
     todo: todoReducer,
   },
-  middleware: (getDefaultMiddleware => [...getDefaultMiddleware(), eventSourcingMiddleware])
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(eventSourcingMiddleware),
 })
-
 
 store.dispatch(loadEventActions())
 
